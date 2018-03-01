@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+
+  resources :memos
+#  get '/memos/new', to: 'memos#new', as 'new_memo'
+#  post '/memos', to: 'memos#create'
+
+#  get '/memos/:id', to: 'memos#show'
+#  get '/memos', to: 'memos#index'
+
+#  get 'memos/:id/edit'
+#  patch 'memos/:id'
+
+#  delete 'memos/:id'
+
   devise_for :users
   root 'home#index'
   get 'home/index'
