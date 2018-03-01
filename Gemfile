@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#login devise
+gem 'devise'
+gem 'devise-bootstrap-views'
 #bootstrap
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
@@ -41,6 +44,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 	gem 'sqlite3'
+  gem 'rails_db'
 end
 
 group :development do
