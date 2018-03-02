@@ -1,32 +1,38 @@
 
-<h1><%= @memo.title %></h1>
-<hr>
-<h2>By <%= @memo.user.email %></h2>
-<hr>
-<p><%= @memo.content.html_safe %></p>
-<h3>
-	<%= icon 'time' %>
-	<%= local_time(@memo.created_at) %></h3>
-	<%# TODO: only activate when current_user == writer %>
-	<%= icon 'pencil' %>
+<h1><%= @memo.title %></h1>By <%= @memo.user.email %>
+<br> <%= icon 'time' %> <%= local_time(@memo.created_at) %>  
+&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;<sp><%= icon 'pencil' %> Update
+<% if current_user == @memo.user %>
 	<%= link_to 'Update', edit_memo_path %>
-	<%= icon 'trash' %>
+<% else %>
+	<%# alert '접근권한 없음' %>
+<% end %>
+<%= icon 'trash' %> Delete
+<% if current_user == @memo.user %>
 	<%= link_to 'Delete', memo_path, method: :delete%>
-<hr/>
-
+<% end %>
+<hr>
+<div class = "content">
+	<%= @memo.content.html_safe %>
+		
+</div>
+<hr>
 <div class="well">
 	<p>
-		<%= bootstrap_form_for @comment, url: memo_comments_path(@memo) do |f| %>
-			<%= f.hidden_field :user_id, value: current_user.id%>
-			<%= f.hidden_field :memo_id, value: @memo.id%>
-			<%= f.text_field :content, label: 'Leave a comment!'%>
-			<%= f.submit %>
+		<% if user_signed_in? %>
+			<%= bootstrap_form_for @comment, url: memo_comments_path(@memo) do |f| %>
+				<%= f.hidden_field :user_id, value: current_user.id%>
+				<%= f.hidden_field :memo_id, value: @memo.id%>
+				<%= f.text_field :content, label: 'Leave a comment!'%>
+				<%= f.submit %>
 			<% end %>
+		<% else %>
+			<%= link_to 'Log in to write a comment', new_user_session_path %>
+		<% end %>
 	</p>
 </div>
 
 <div class="well">
-	<p>
 		<% @comments.each do |c| %>
 			<div class="media">
 				<h4 class="media-heading">
@@ -35,10 +41,11 @@
 					<p> <%= c.content %> </p>
 			
 				<%= icon 'time' %>
-				<small><%= local_time(c.created_at) %></small><%= link_to icon('trash'), memo_comment_path(@memo, c), method: :delete   %>
-				
-			
+				<small><%= local_time(c.created_at) %></small>
+				<% if current_user == c.user %>
+					<%= link_to icon('trash'), memo_comment_path(@memo, c), method: :delete   %>
+				<% end %>			
 			</div>
 		<% end %>
-	</p>
+
 </div>

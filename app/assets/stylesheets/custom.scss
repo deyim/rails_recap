@@ -9,6 +9,17 @@ body {
 	padding-top: 80px;
 }
 
+h4 {
+	font-size: 1em;
+}
+
+.well{
+	margin-top: 10px
+}
+
+.content{
+	padding: 10px
+}
 //header
 
 #logo {
@@ -18,10 +29,14 @@ body {
 	color: #fff;
 	text-transfom: uppercase;
 	letter-spacing: -1px;
-	padding-top: 9px;
+	padding-top: 20px;
 	font-weight: bold;
 	&:hover{
 		color: #fff;
 		text-decoration: none;
 	}
+}
+
+.right-elements{
+	padding-top: 10px;
 }
