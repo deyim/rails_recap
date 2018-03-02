@@ -1,2 +1,24 @@
-<h1>Memos#show</h1>
-<p>Find me in app/views/memos/show.html.erb</p>
+
+<h1><%= @memo.title %></h1>
+<hr>
+<h2>By <%= @memo.user.email %></h2>
+<hr>
+<p><%= @memo.content.html_safe %></p>
+<h3>
+	<%= icon 'time' %>
+	<%= local_time(@memo.created_at) %></h3>
+	<%# TODO: only activate when current_user == writer %>
+	<%= icon 'pencil' %> <%= icon 'trash' %>
+<hr/>
+
+<div class="well">
+	<p>
+		<%# TODO: 댓글작성창 %>
+	</p>
+</div>
+
+<div class="well">
+	<p>
+		<%# TODO: 댓글보여주는창 %>
+	</p>
+</div>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'memos#index'
   resources :memos
 #  get '/memos/new', to: 'memos#new', as 'new_memo'
 #  post '/memos', to: 'memos#create'

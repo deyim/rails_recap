@@ -5,6 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#pagination
+gem 'kaminari'
+
+#time
+gem 'local_time', '~> 2.0'
+
 #editor
 gem 'tinymce-rails'
 
