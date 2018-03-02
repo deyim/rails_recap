@@ -26,6 +26,17 @@ class MemosController < ApplicationController
 
 #Update
   def edit
+  	@memo = Memo.find(params[:id])
+  end
+
+  def update
+  	@memo = Memo.find(params[:id])
+  	@memo.title = params[:memo][:title]
+  	@memo.content = params[:memo][:content]
+  	@memo.user_id = params[:memo][:user_id]
+  	@memo.save
+
+  	redirect_to @memo
   end
 
 #Destroy

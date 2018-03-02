@@ -8,7 +8,9 @@
 	<%= icon 'time' %>
 	<%= local_time(@memo.created_at) %></h3>
 	<%# TODO: only activate when current_user == writer %>
-	<%= icon 'pencil' %> <%= icon 'trash' %>
+	<%= icon 'pencil' %>
+	<%= link_to 'Update', edit_memo_path %>
+	<%= icon 'trash' %>
 <hr/>
 
 <div class="well">
