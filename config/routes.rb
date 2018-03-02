@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  root 'memos#index'
-  resources :memos
+	root 'memos#index'
+	resources :memos do
+		resources :comments, only: [:create, :destroy]
+ 	end
 #  get '/memos/new', to: 'memos#new', as 'new_memo'
 #  post '/memos', to: 'memos#create'
 

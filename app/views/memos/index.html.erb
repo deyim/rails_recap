@@ -14,7 +14,7 @@
 			<tr>
 				<td><%= link_to memo.title, memo %></td>
 				<td><%= memo.user.email %></td>
-				<td><%# TODO: commet counts %>100</td>
+				<td><%= memo.comments.count %></td>
 			</tr>
 			<% end %>
 		</tbody>

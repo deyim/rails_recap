@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :memos
+  has_many :comments
+
+  # TODO: validation
 end
